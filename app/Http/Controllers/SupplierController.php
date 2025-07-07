@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class SupplierController extends Controller
 {
@@ -97,4 +98,25 @@ class SupplierController extends Controller
         $supplier->delete();
         return redirect()->route('supplier.index')->with('success', 'Data berhasil dihapus');
     }
+
+    public function show($id)
+    {
+        // Cari supplier di database berdasarkan ID
+        $supplier = Supplier::findOrFail($id); // findOrFail akan otomatis error 404 jika tidak ditemukan
+
+        // Kirim data supplier ke view 'supplier.show'
+        return view('supplier.show', compact('supplier'));
+    }
+    
+
+    /**
+     * Menampilkan halaman cetak untuk semua data supplier.
+     */
+    public function printAll()
+    {
+        $suppliers = \App\Models\Supplier::all();
+        $pdf = 'PDF'::loadview('supplier.print_all',compact('suppliers'));
+        return $pdf->stream('laporan-semua-supplier.pdf');
+    }
+    
 }

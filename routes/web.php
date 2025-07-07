@@ -21,3 +21,5 @@ Route::get('/', function () {
 
 
 Route::resource('supplier', SupplierController::class);
+Route::get('/print_all',[SupplierController::class,'printAll']);
+//Route::get('/supplier/printAll', [SupplierController::class, 'printAll'])->name('supplier.printAll');
