@@ -149,6 +149,7 @@
             <nav class="main-nav" id="mainNav">
                 <ul>
                     <li><a href="{{ route('supplier.index') }}">SUPPLIER</a></li>
+                    <li><a href="{{ route('barang.index') }}">BARANG</a></li>
                 </ul>
             </nav>
         </div>
@@ -205,6 +206,9 @@
                         @else
                             <p>Tidak ada foto.</p>
                         @endif
+                    </div>
+                    <div class="timestamps">
+                        Dibuat pada: {{ $supplier->created_at->format('d F Y, H:i') }} | Terakhir diubah: {{ $supplier->updated_at->format('d F Y, H:i') }}
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Supplier</title>
+    <title>Daftar Barang</title>
     
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -27,11 +27,12 @@
                     <li><a href="{{ route('supplier.index') }}">SUPPLIER</a></li>
                     <li><a href="{{ route('barang.index') }}">BARANG</a></li>
                 </ul>
+                    
             </nav>
         </div>
         <div class="header-right">
             <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Cari supplier...">
+                <input type="text" id="searchInput" placeholder="Cari Barang...">
             </div>
             <div class="user-profile">
                 <img src="https://ui-avatars.com/api/?name=A" alt="User Avatar" class="user-avatar">
@@ -45,10 +46,10 @@
 
     <main class="dashboard-main">
         <div class="main-title-bar">
-            <h2>Daftar Supplier</h2>
+            <h2>Daftar Barang</h2>
             <div class="main-actions">
-            <a href="print_all" class="btn-print" target="_blank"><i class="fas fa-print"></i> Cetak Laporan</a>
-                <a href="{{ route('supplier.create') }}" class="add-button">+ Tambah Supplier</a>
+            <a href="barang-print_all" class="btn-print" target="_blank"><i class="fas fa-print"></i> Cetak Laporan</a>
+                <a href="{{ route('barang.create') }}" class="add-button">+ Tambah Barang</a>
             </div>
         </div>
 
@@ -58,26 +59,21 @@
         @endif
 
         <div class="supplier-container">
-            @forelse($suppliers as $s)
-                <a href="{{ route('supplier.show', $s->id_sp) }}" class="supplier-card-link">
+            @forelse($barangs as $brg)
+                <a href="{{ route('barang.show', $brg->id_brg) }}" class="supplier-card-link">
                     <div class="supplier-card">
                         <div class="supplier-details">
-                            <h3>{{ $s->nama_supplier }}</h3>
-                            <p><strong>Kode:</strong> {{ $s->id_sp }}</p>
-                            <p><strong>Alamat:</strong> {{ Str::limit($s->alamat, 50) }}</p>
-                            <p><strong>Kontak:</strong> {{ $s->kontak }}</p>
+                            <h3>{{ $brg->nama_barang }}</h3>
+                            <p><strong>Kode:</strong> {{ $brg->id_brg }}</p>
+                            <p><strong>Nama Barang:</strong> {{ Str::limit($brg->nama_barang, 50) }}</p>
+                            <p><strong>Satuan:</strong> {{ $brg->satuan }}</p>
+                            <p><strong>Isi:</strong> {{ $brg->isi }}</p>
                         </div>
-                        
-                        @if($s->foto)
-                            <div class="supplier-photo">
-                                <img src="{{ asset('uploads/supplier/' . $s->foto) }}" alt="Foto {{ $s->nama_supplier }}">
-                            </div>
-                        @endif
                     </div>
                 </a>
             @empty
                 <div class="card-empty" style="width: 100%; text-align: center; padding: 20px;">
-                    <p>Belum ada data supplier. Silakan tambahkan data baru.</p>
+                    <p>Belum ada data Barang. Silakan tambahkan data baru.</p>
                 </div>
             @endforelse
         </div>

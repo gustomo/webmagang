@@ -18,6 +18,7 @@
             <nav class="main-nav" id="mainNav">
                 <ul>
                     <li><a href="{{ route('supplier.index') }}">SUPPLIER</a></li>
+                    <li><a href="{{ route('barang.index') }}">BARANG</a></li>
                 </ul>
             </nav>
         </div>

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SupplierController;
-
+use App\Http\Controllers\BarangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,3 +23,6 @@ Route::get('/', function () {
 Route::resource('supplier', SupplierController::class);
 Route::get('/print_all',[SupplierController::class,'printAll']);
 //Route::get('/supplier/printAll', [SupplierController::class, 'printAll'])->name('supplier.printAll');
+
+Route::resource('barang', BarangController::class);
+Route::get('/barang-print_all',[BarangController::class,'printAll']);
