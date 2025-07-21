@@ -13,6 +13,6 @@ class Barang extends Model
     protected $keyType = 'string';
 
     protected $fillable = [
-        'id_brg', 'nama_barang', 'satuan', 'isi',
+        'id_brg', 'nama_barang', 'satuan', 'isi','stok','gambar'
     ];
 }

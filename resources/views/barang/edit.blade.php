@@ -120,7 +120,7 @@
             <h2>Edit Data Barang</h2>
             <p class="form-subtitle">Perbarui informasi barang di bawah ini.</p>
 
-            <form action="{{ route('barang.update', $barang->id_brg) }}" method="POST">
+            <form action="{{ route('barang.update', $barang->id_brg) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -133,7 +133,17 @@
                     <label for="nama_barang">Nama Barang</label>
                     <input type="text" id="nama_barang" name="nama_barang" value="{{ $barang->nama_barang }}" required>
                 </div>
-
+             @if ($barang->gambar)
+               <div class="form-group">
+                   <label>Gambar Saat Ini:</label><br>
+                   <img src="{{ asset('uploads/barang/' . $barang->gambar) }}" width="150px">
+                  
+                </div>
+             @endif           
+             <div class="form-group">
+    <label for="gambar">Ganti Gambar (Opsional)</label>
+            <input type="file" name="gambar" id="gambar" accept="image/*">
+            </div>
                 <div class="form-group">
                     <label for="satuan">Satuan</label>
                     <select id="satuan" name="satuan" required>
@@ -149,6 +159,12 @@
                     <label for="isi">Isi per Satuan</label>
                     <input type="number" id="isi" name="isi" value="{{ $barang->isi }}" required>
                 </div>
+
+                
+<div class="form-group">
+    <label for="stok">Stok</label>
+    <input type="number" id="stok" name="stok" value="{{ $barang->stok }}" required>
+</div>
 
                 <div class="form-actions">
                     <a href="{{ route('barang.index') }}" class="btn-cancel">Batal</a>

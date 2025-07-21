@@ -60,18 +60,23 @@
 
         <div class="supplier-container">
             @forelse($barangs as $brg)
-                <a href="{{ route('barang.show', $brg->id_brg) }}" class="supplier-card-link">
-                    <div class="supplier-card">
-                        <div class="supplier-details">
-                            <h3>{{ $brg->nama_barang }}</h3>
-                            <p><strong>Kode:</strong> {{ $brg->id_brg }}</p>
-                            <p><strong>Nama Barang:</strong> {{ Str::limit($brg->nama_barang, 50) }}</p>
-                            <p><strong>Satuan:</strong> {{ $brg->satuan }}</p>
-                            <p><strong>Isi:</strong> {{ $brg->isi }}</p>
-                        </div>
-                    </div>
-                </a>
-            @empty
+    <a href="{{ route('barang.show', $brg->id_brg) }}" class="supplier-card-link">
+        <div class="supplier-card">
+            {{-- Tambahkan gambar di sini --}}
+            @if($brg->gambar)
+                <img src="{{ asset('uploads/barang/' . $brg->gambar) }}" alt="Gambar Barang" width="100" style="display:block;margin-bottom:10px;">
+            @endif
+            <div class="supplier-details">
+                <h3>{{ $brg->nama_barang }}</h3>
+                <p><strong>Kode:</strong> {{ $brg->id_brg }}</p>
+                <p><strong>Nama Barang:</strong> {{ Str::limit($brg->nama_barang, 50) }}</p>
+                <p><strong>Satuan:</strong> {{ $brg->satuan }}</p>
+                <p><strong>Isi:</strong> {{ $brg->isi }}</p>
+                <p><strong>Stok:</strong> {{ $brg->stok }}</p>
+            </div>
+        </div>
+    </a>
+@empty
                 <div class="card-empty" style="width: 100%; text-align: center; padding: 20px;">
                     <p>Belum ada data Barang. Silakan tambahkan data baru.</p>
                 </div>

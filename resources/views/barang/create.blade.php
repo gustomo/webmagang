@@ -44,7 +44,7 @@
             <h2>Form Tambah Barang Baru</h2>
             <p class="form-subtitle">Isi detail di bawah ini untuk menambahkan data barang.</p>
 
-            <form action="{{ route('barang.store') }}" method="POST">
+            <form action="{{ route('barang.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <!-- Input untuk id_brg telah dihapus -->
@@ -72,6 +72,16 @@
                 <div class="form-group">
                     <label for="isi">Isi per Satuan</label>
                     <input type="number" id="isi" name="isi" required placeholder="Contoh: 500 (untuk 1 rim)">
+                </div>
+                
+<div class="form-group">
+    <label for="stok">Stok</label>
+    <input type="number" id="stok" name="stok" required placeholder="Contoh: 100">
+</div>
+
+                <div class="form-group">
+                    <label for="gambar">Gambar Barang</label>
+                    <input type="file" name="gambar" class="form-control">
                 </div>
 
                 <!-- Tombol Aksi Form -->
