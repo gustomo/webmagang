@@ -30,7 +30,7 @@ class BarangController extends Controller
     /**
      * Menyimpan data barang yang baru dibuat ke dalam storage.
      */
- public function store(Request $request)
+public function store(Request $request)
 {
     $request->validate([
         'nama_barang' => 'required',
@@ -83,7 +83,7 @@ class BarangController extends Controller
     /**
      * Memperbarui data barang yang ada di storage.
      */
-  public function update(Request $request, Barang $barang)
+public function update(Request $request, Barang $barang)
 {
     $request->validate([
         'nama_barang' => 'required',
@@ -115,7 +115,7 @@ class BarangController extends Controller
     /**
      * Menghapus data barang dari storage.
      */
-   public function destroy(Barang $barang)
+public function destroy(Barang $barang)
 {
     // Hapus gambar terkait jika ada
     if ($barang->gambar && file_exists(public_path('uploads/barang/' . $barang->gambar))) {

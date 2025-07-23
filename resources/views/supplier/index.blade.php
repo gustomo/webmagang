@@ -26,6 +26,7 @@
                 <ul>
                     <li><a href="{{ route('supplier.index') }}">SUPPLIER</a></li>
                     <li><a href="{{ route('barang.index') }}">BARANG</a></li>
+                    <li><a href="{{ route('transaksi.index') }}">TRANSAKSI</a></li>
                 </ul>
             </nav>
         </div>
